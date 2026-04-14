@@ -1,0 +1,756 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+/* ===== COLORS (UNCHANGED) ===== */
+:root{
+--pu:#534AB7;--pu-l:#EEEDFE;--pu-t:#3C3489;
+--te:#0F6E56;--te-l:#E1F5EE;--te-t:#085041;
+--co:#993C1D;--co-l:#FAECE7;--co-t:#712B13;
+--am:#854F0B;--am-l:#FAEEDA;--am-t:#633806;
+--bl:#185FA5;--bl-l:#E6F1FB;--bl-t:#0C447C;
+--gr:#3B6D11;--gr-l:#EAF3DE;--gr-t:#27500A;
+--pk:#993556;--pk-l:#FBEAF0;--pk-t:#72243E;
+
+--color-text-primary:#111827;
+--color-text-secondary:#4B5563;
+--color-text-tertiary:#9CA3AF;
+
+--color-border-secondary:#E5E7EB;
+--color-border-tertiary:#F1F5F9;
+
+--color-background-secondary:#F9FAFB;
+
+--font-sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ===== BASE ===== */
+body{
+font-family:var(--font-sans);
+background:linear-gradient(180deg,#f8fafc 0%, #eef2ff 100%);
+}
+
+/* ===== MAIN WRAPPER ===== */
+.doc{
+max-width:1100px;
+margin:30px auto;
+padding:20px 16px 48px;
+}
+
+/* ===== CONTENT CARD ===== */
+#ov, #pv{
+background:#fff;
+border-radius:10px;
+padding:18px;
+box-shadow:0 8px 24px rgba(0,0,0,0.05);
+}
+
+/* ===== TEXT ===== */
+.cover-title{font-size:22px;font-weight:500;color:var(--color-text-primary);line-height:1.3;margin-bottom:6px}
+.cover-sub{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:14px}
+
+.divider{height:0.5px;background:var(--color-border-tertiary);margin:24px 0}
+
+.sec-lbl{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:12px}
+
+/* ===== PILLS (FLOW CAPSULE FIX) ===== */
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+
+.pill{
+font-size:11px;
+padding:5px 12px;
+border-radius:999px;
+border:0.5px solid var(--color-border-secondary);
+color:var(--color-text-secondary);
+background:#fff;
+white-space:nowrap;
+}
+
+/* ===== KPI ===== */
+.kpi-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:24px}
+
+.kpi{
+background:var(--color-background-secondary);
+border-radius:8px;
+padding:12px 14px;
+border:0.5px solid var(--color-border-tertiary)
+}
+
+.kpi-l{font-size:11px;color:var(--color-text-secondary);margin-bottom:4px}
+.kpi-v{font-size:19px;font-weight:500;color:var(--color-text-primary)}
+.kpi-s{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+
+/* ===== NAV ===== */
+.nav-list{display:flex;flex-direction:column;gap:4px;margin-bottom:24px}
+
+.nav-item{
+display:flex;
+align-items:center;
+gap:12px;
+padding:10px 14px;
+border-radius:8px;
+border:0.5px solid var(--color-border-tertiary);
+cursor:pointer;
+background:#fff;
+transition:all .15s ease;
+}
+
+.nav-item:hover{background:var(--color-background-secondary)}
+
+.nav-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+.nav-name{
+font-size:13px;
+font-weight:500;
+color:var(--color-text-primary);
+flex:1;
+}
+
+.nav-meta{
+font-size:11px;
+color:var(--color-text-tertiary);
+white-space:nowrap;
+}
+
+.nav-bar-wrap{
+flex:0 0 70px;
+height:3px;
+background:var(--color-border-tertiary);
+border-radius:2px;
+overflow:hidden;
+}
+
+.nav-bar-fill{height:100%;border-radius:2px}
+
+/* ===== PHASE HEADER ===== */
+.ph-head{
+padding:16px 18px;
+border-radius:10px 10px 0 0;
+border:0.5px solid var(--color-border-tertiary);
+border-bottom:none;
+margin-bottom:0;
+}
+
+.ph-title{
+font-size:15px;
+font-weight:600;
+margin-bottom:6px;
+line-height:1.4;
+}
+
+.ph-desc{
+font-size:12px;
+line-height:1.6;
+opacity:.9;
+}
+
+/* ===== TABLE ===== */
+.tbl{
+width:100%;
+border-collapse:collapse;
+border:0.5px solid var(--color-border-tertiary);
+border-top:none;
+border-radius:0 0 10px 10px;
+overflow:hidden;
+background:#fff;
+}
+
+.tbl tr{border-bottom:0.5px solid var(--color-border-tertiary)}
+.tbl tr:last-child{border-bottom:none}
+
+.tbl .dt{
+width:108px;
+padding:12px 10px 12px 14px;
+font-size:11px;
+color:var(--color-text-tertiary);
+vertical-align:top;
+border-right:0.5px solid var(--color-border-tertiary);
+line-height:1.5
+}
+
+.tbl .ev{padding:12px 14px;vertical-align:top}
+
+.ev-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:5px}
+
+/* ===== BULLET FIX ===== */
+.ev-body{
+font-size:12px;
+color:var(--color-text-secondary);
+line-height:1.65;
+white-space:pre-line;
+}
+
+.ev-body ul{
+margin-top:6px;
+padding-left:16px;
+list-style-position:outside;
+}
+
+.ev-body li{
+margin-bottom:4px;
+line-height:1.6;
+}
+
+/* ===== TAGS (CAPSULE FIX) ===== */
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
+
+.tag{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+font-size:11px;
+font-weight:500;
+padding:3px 10px;
+border-radius:999px;
+line-height:1;
+white-space:nowrap;
+}
+
+.t-pu{background:var(--pu-l);color:var(--pu-t)}
+.t-te{background:var(--te-l);color:var(--te-t)}
+.t-co{background:var(--co-l);color:var(--co-t)}
+.t-am{background:var(--am-l);color:var(--am-t)}
+.t-bl{background:var(--bl-l);color:var(--bl-t)}
+.t-gr{background:var(--gr-l);color:var(--gr-t)}
+.t-pk{background:var(--pk-l);color:var(--pk-t)}
+
+.money{
+font-size:11px;
+font-weight:500;
+background:var(--gr-l);
+color:var(--gr-t);
+padding:3px 10px;
+border-radius:999px;
+}
+
+/* ===== NOTE ===== */
+.note{
+border-left:3px solid var(--color-border-secondary);
+padding:10px 14px;
+background:var(--color-background-secondary);
+border-radius:0 8px 8px 0;
+font-size:12px;
+color:var(--color-text-secondary);
+line-height:1.6;
+margin:12px 0 0;
+}
+
+/* ===== STATUS ===== */
+.status-grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:8px;
+margin-bottom:24px
+}
+
+.sc{
+border:0.5px solid var(--color-border-tertiary);
+border-radius:8px;
+padding:12px 14px;
+background:#fff
+}
+
+.sc-title{
+font-size:12px;
+font-weight:500;
+color:var(--color-text-primary);
+margin-bottom:8px
+}
+
+.si{
+font-size:12px;
+color:var(--color-text-secondary);
+padding:3px 0;
+display:flex;
+gap:6px;
+line-height:1.5;
+}
+
+.si-dot{
+width:6px;
+height:6px;
+border-radius:50%;
+margin-top:5px
+}
+
+/* ===== FINANCIAL TABLE FIX ===== */
+.fin-tbl{
+width:100%;
+border-collapse:collapse;
+font-size:12px;
+border:0.5px solid var(--color-border-tertiary);
+border-radius:10px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.fin-tbl th{
+font-size:11px;
+font-weight:600;
+color:var(--color-text-tertiary);
+text-align:left;
+padding:10px 12px;
+border-bottom:0.5px solid var(--color-border-tertiary);
+background:var(--color-background-secondary);
+}
+
+.fin-tbl td{
+padding:11px 12px;
+border-bottom:0.5px solid var(--color-border-tertiary);
+color:var(--color-text-secondary);
+vertical-align:top;
+line-height:1.6;
+word-break:break-word;
+}
+
+.fin-tbl tr:last-child td{border-bottom:none}
+
+.fin-amt{
+font-weight:600;
+color:var(--color-text-primary);
+white-space:nowrap;
+}
+
+.fin-total td{
+font-weight:600;
+color:var(--color-text-primary);
+background:var(--color-background-secondary);
+}
+
+/* column control */
+.fin-tbl td:first-child{width:55%}
+.fin-tbl td:nth-child(2){width:15%;white-space:nowrap}
+.fin-tbl td:nth-child(3){width:15%}
+.fin-tbl td:nth-child(4){width:15%}
+
+.legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin:14px 0 20px;
+}
+
+.leg{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  color:var(--color-text-secondary);
+  background:var(--color-background-secondary);
+  padding:4px 10px;
+  border-radius:999px;
+  border:0.5px solid var(--color-border-tertiary);
+}
+
+.leg-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  flex-shrink:0;
+}
+
+.flow{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px;
+  margin:14px 0 26px;
+}
+
+.fs{
+  font-size:11px;
+  padding:6px 12px;
+  border-radius:20px;
+  font-weight:500;
+  white-space:nowrap;
+
+  /* subtle elevation */
+  border:0.5px solid var(--color-border-secondary);
+  box-shadow:0 1px 2px rgba(0,0,0,0.04);
+
+  transition:all .15s ease;
+}
+
+.fs:hover{
+  transform:translateY(-1px);
+  box-shadow:0 3px 8px rgba(0,0,0,0.06);
+}
+
+/* arrow styling */
+.fa{
+  font-size:12px;
+  color:var(--color-text-tertiary);
+  opacity:0.8;
+}
+
+/* optional: stronger arrow spacing */
+.fa::before{
+  content:"";
+  margin:0 2px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+.kpi-row{grid-template-columns:1fr}
+.status-grid{grid-template-columns:1fr}
+.nav-meta{display:none}
+.nav-bar-wrap{display:none}
+}
+</style>
+
+<div class="doc">
+<div id="ov">
+
+<div style="margin-bottom:24px">
+  <div class="cover-title">TwoPay — NRA Global Services<br>Complete Project Record</div>
+  <div class="cover-sub">Full end-to-end documentation of every conversation, client request, work completed, decision taken, payment received, and current status. This document is for the entire internal team — Project Manager, Support, Developers, and Management — so anyone reading it has the same complete picture as the person who was on every call.</div>
+  <div class="pills">
+    <span class="pill">Client: Ahmed (Mr. Syed Bojle Islam)</span>
+    <span class="pill">Company: NRA Global Services / TwoPay</span>
+    <span class="pill">City: Hyderabad, Telangana</span>
+    <span class="pill">Project start: 24 Nov 2025</span>
+    <span class="pill">As of: 14 Apr 2026</span>
+    <span class="pill">Prepared by: Business Online Solutions Pvt. Ltd.</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="sec-lbl">Project snapshot</div>
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-l">Core project value</div><div class="kpi-v">₹1,00,000</div><div class="kpi-s">100% received upfront</div></div>
+  <div class="kpi"><div class="kpi-l">Additional payments</div><div class="kpi-v">₹17,405</div><div class="kpi-s">Domains + SSL (received)</div></div>
+  <div class="kpi"><div class="kpi-l">Pending payment</div><div class="kpi-v">₹7,000+GST</div><div class="kpi-s">Static website (deferred)</div></div>
+</div>
+
+<div class="sec-lbl">Who is the client?</div>
+<div class="note" style="margin-bottom:20px">
+  <strong style="color:var(--color-text-primary)">Ahmed</strong> is the contact person — he is the founder and operator of NRA Global Services, a proprietorship registered at 14-20-557/14/2 BORAB, Rajiv Gandhi Nagar, Hyderabad, Telangana – 500018. Brand name: <strong style="color:var(--color-text-primary)">TwoPay</strong>. Email: apiservicesnra@gmail.com. Mobile: 9059789824. The company was later registered as a <strong style="color:var(--color-text-primary)">private limited company</strong> in Dec 2025 with MOA/AOA submitted on 12 Jan 2026. GST received Feb 2026. The client is building a fintech platform for B2B retailers and B2C customers offering financial services including flight/bus booking, recharge, money transfer, and card services.
+</div>
+
+<div class="sec-lbl">Overall project flow</div>
+<div class="flow">
+  <span class="fs" style="background:var(--pu-l);color:var(--pu-t)">Onboarding</span><span class="fa">→</span>
+  <span class="fs" style="background:var(--pu-l);color:var(--pu-t)">Logo + domain</span><span class="fa">→</span>
+  <span class="fs" style="background:var(--te-l);color:var(--te-t)">B2B dev</span><span class="fa">→</span>
+  <span class="fs" style="background:var(--te-l);color:var(--te-t)">B2B delivered</span><span class="fa">→</span>
+  <span class="fs" style="background:var(--am-l);color:var(--am-t)">API challenges</span><span class="fa">→</span>
+  <span class="fs" style="background:var(--co-l);color:var(--co-t)">D2C + static delivered</span><span class="fa">→</span>
+  <span class="fs" style="background:var(--bl-l);color:var(--bl-t)">Change requests</span><span class="fa">→</span>
+  <span class="fs" style="background:var(--bl-l);color:var(--bl-t)">Sprint active</span>
+</div>
+
+<div class="divider"></div>
+<div class="sec-lbl">Select a phase for full detail</div>
+<div class="nav-list">
+  <div class="nav-item" onclick="show('p1')"><div class="nav-dot" style="background:var(--pu)"></div><div class="nav-name">Phase 1 — Onboarding, branding & setup</div><div class="nav-meta">24 Nov – 28 Nov 2025</div><div class="nav-bar-wrap"><div class="nav-bar-fill" style="width:100%;background:var(--pu)"></div></div></div>
+  <div class="nav-item" onclick="show('p2')"><div class="nav-dot" style="background:var(--te)"></div><div class="nav-name">Phase 2 — B2B development, approvals & delivery</div><div class="nav-meta">2 Dec 2025 – 31 Mar 2026</div><div class="nav-bar-wrap"><div class="nav-bar-fill" style="width:100%;background:var(--te)"></div></div></div>
+  <div class="nav-item" onclick="show('p3')"><div class="nav-dot" style="background:var(--am)"></div><div class="nav-name">Phase 3 — API integrations, blockers & third-party discussions</div><div class="nav-meta">Dec 2025 – Apr 2026 (ongoing)</div><div class="nav-bar-wrap"><div class="nav-bar-fill" style="width:55%;background:var(--am)"></div></div></div>
+  <div class="nav-item" onclick="show('p4')"><div class="nav-dot" style="background:var(--co)"></div><div class="nav-name">Phase 4 — D2C panel + static website delivery</div><div class="nav-meta">20 Feb – 31 Mar 2026</div><div class="nav-bar-wrap"><div class="nav-bar-fill" style="width:100%;background:var(--co)"></div></div></div>
+  <div class="nav-item" onclick="show('p5')"><div class="nav-dot" style="background:var(--bl)"></div><div class="nav-name">Phase 5 — Change requests, sprint & current status</div><div class="nav-meta">1 Apr – 14 Apr 2026</div><div class="nav-bar-wrap"><div class="nav-bar-fill" style="width:40%;background:var(--bl)"></div></div></div>
+  <div class="nav-item" onclick="show('fin')"><div class="nav-dot" style="background:var(--gr)"></div><div class="nav-name">Financial record — all payments, commercials & pending</div><div class="nav-meta">Complete financial log</div><div class="nav-bar-wrap"><div class="nav-bar-fill" style="width:100%;background:var(--gr)"></div></div></div>
+  <div class="nav-item" onclick="show('status')"><div class="nav-dot" style="background:var(--co)"></div><div class="nav-name">Current delivery status — what's done, in progress, pending</div><div class="nav-meta">As of 14 Apr 2026</div><div class="nav-bar-wrap"><div class="nav-bar-fill" style="width:60%;background:var(--co)"></div></div></div>
+</div>
+
+</div>
+
+<div id="pv" style="display:none; margin-bottom:40px; padding-bottom:20px;">
+
+  <button onclick="goBack()" 
+    style="
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:13px;
+      padding:6px 12px;
+      border-radius:6px;
+      border:1px solid #e5e7eb;
+      background:#ffffff;
+      color:#374151;
+      cursor:pointer;
+      transition:all 0.2s ease;
+      box-shadow:0 1px 2px rgba(0,0,0,0.05);
+      margin-bottom:14px;
+    "
+    onmouseover="this.style.background='#f9fafb'"
+    onmouseout="this.style.background='#ffffff'"
+  >
+    ← Back to overview
+  </button>
+
+  <div id="pc" style="margin-bottom:20px;"></div>
+
+</div>
+</div>
+
+<script>
+const data={
+p1:{
+  color:'var(--pu)',bg:'var(--pu-l)',tc:'var(--pu-t)',
+  title:'Phase 1 — Onboarding, branding & setup',
+  desc:'The project was received on 24 Nov 2025. This phase covers the very first conversations with the client: understanding what he wants, creating the brand identity, purchasing the domain and SSL, and setting the foundation for all development work. Every team member should know: the client was fully committed from day one and paid for everything upfront.',
+  rows:[
+    {dt:'24 Nov 2025',who:'Account manager + client (Ahmed)',tags:['t-pu'],tl:['Project start'],title:'Project officially onboarded',body:'Client Ahmed (NRA Global Services) came to Business Online Solutions Pvt. Ltd. with a requirement to build a complete fintech platform under the brand name TwoPay. Full scope was discussed and agreed upon. The project cost was set at ₹1,00,000 with 100% payment received upfront.',
+    list:['Business type: Proprietorship (later registered as Pvt. Ltd.)','Agreed services: Web Application, Android App, Flight Booking, Bus Booking, Recharge, DMT, BBPS, Aadhaar Verification, PAN Verification, AEPS, QR, Payout API, Payment Gateway, Credit Card Bill Payment','Delivery deadline agreed: on or before 12 Dec 2025','Payment terms: 100% received']},
+    {dt:'24 Nov 2025',who:'Internal team',tags:['t-pk'],tl:['Design started'],title:'Logo ideation begins',body:'Same day as project onboarding, logo design work was initiated internally. Multiple concepts explored for the TwoPay brand identity.'},
+    {dt:'26 Nov 2025',who:'Account manager + client (Ahmed)',tags:['t-pk'],tl:['Design','Client approval'],title:'Logo finalised and approved by client',body:'After reviewing logo concepts, client formally approved the final TwoPay logo on this date. This was the first client-approved deliverable of the project.',note:'Important: Client later (Jan 2026) requested the logo to be enhanced for brand registration. He outsourced this himself and shared the new version on 17 Jan 2026. The new logo is now in use across all platforms.'},
+    {dt:'26 Nov 2025',who:'Client (Ahmed)',tags:['t-bl'],tl:['Client request'],title:'Client requests domain purchase',body:'On the same day the logo was approved, client asked us to purchase the domain twopay.in on his behalf. He also requested an SSL certificate for the website. This was a separate billable item outside the core project cost.'},
+    {dt:'27 Nov 2025',who:'Account manager + client (Ahmed)',tags:['t-gr'],tl:['Commercial','Payment'],title:'Domain + SSL pricing communicated and payment received',body:'Pricing was shared with client and he agreed immediately. Payment of ₹8,201 was made by client via scanning the QR code on Pinki Sethi\'s account.',
+    list:['Domain twopay.in (3 years): ₹2,150 + 18% GST (₹387) = ₹2,537','SSL Certificate (1 year, renewable): ₹4,800 + 18% GST (₹864) = ₹5,664','Total collected: ₹8,201'],
+    money:'₹8,201 received'},
+    {dt:'28 Nov 2025',who:'Account manager → client (Ahmed)',tags:['t-te'],tl:['Delivered'],title:'Domain and SSL certificate purchased — client informed',body:'Domain twopay.in and the SSL certificate were officially purchased. Client was informed of successful acquisition. Server-side setup initiated to prepare for development.'},
+  ]
+},
+p2:{
+  color:'var(--te)',bg:'var(--te-l)',tc:'var(--te-t)',
+  title:'Phase 2 — B2B development, approvals & delivery',
+  desc:'This phase covers all B2B portal development — from the first design preview to the final handover of the web portal and Android APK. It also includes all design work (logo revision, prepaid cards, APK splash screen). Key point for the team: the B2B web + APK was delivered on 18 Dec 2025, ahead of many other components. The client found things to improve which are documented here in full.',
+  rows:[
+    {dt:'2 Dec 2025',who:'Account manager → client (Ahmed)',tags:['t-pk'],tl:['Design preview','Client approval'],title:'B2B login page design shared with client',body:'First visual of the B2B portal was shared with client — specifically the login page layout. Client reviewed it and gave his approval. This was an important milestone as it confirmed the design direction before full development.'},
+    {dt:'4 Dec 2025',who:'Account manager → client (Ahmed)',tags:['t-te'],tl:['Formal approval','Development'],title:'Formal approval email sent — full development begins',body:'Approval was documented formally via email. With the design confirmed, the full-scale development of the B2B software started across all agreed modules: flight, bus, recharge, DMT, BBPS, AEPS, QR, payout, and verification services.'},
+    {dt:'6 Dec 2025',who:'Client (Ahmed)',tags:['t-bl'],tl:['Client request','Deferred'],title:'Client shares desired app name for B2B retailer application',body:'Client communicated the name he wants for the B2B retailer Android application. Since the app was still being built, it was mutually agreed to decide the final app name once the application reached a more complete state. This item is still pending confirmation.',note:'Action pending: Final app name to be confirmed and applied once app is closer to final version.'},
+    {dt:'15 Dec 2025',who:'Mr. Rajnish + client (Ahmed)',tags:['t-am'],tl:['Client request','Discussed','Dropped'],title:'Client asks for IRCTC API — discussed and dropped',body:'Client raised a request for IRCTC (Indian Railway) booking integration to be added to the platform. Mr. Rajnish discussed this with Mr. Gupta and confirmed that IRCTC API integration was not part of the original agreed scope. The team offered to find the best pricing if client still wanted it. After further internal discussion involving Mr. Gupta, it was concluded that the IRCTC API is not needed and the client agreed to drop this request.',note:'Resolution: No IRCTC integration required. Request closed.'},
+    {dt:'18 Dec 2025',who:'Account manager → client (Ahmed)',tags:['t-te'],tl:['Delivered','Testing'],title:'B2B Web + APK delivered to client for testing',body:'A major milestone: Client received access to the B2B web portal and Android APK with full test credentials. This was the first major product delivery of the project.',
+    list:['B2B Web portal: delivered and accessible','B2B Android APK: delivered with test credentials','Client asked to thoroughly review and test all available services']},
+    {dt:'18 Dec 2025',who:'Client (Ahmed)',tags:['t-bl'],tl:['Client request','Deferred'],title:'Client requests UI change — Meeseva-style signup',body:'On the same day of delivery, client reviewed the B2B web and gave feedback. He wanted the signup experience to look similar to the Meeseva government portal — providing examples and references of how it should look. This was discussed with the team and it was confirmed this would cost extra beyond the current project scope. Client said: "for now hold on to it" — meaning he wants this in the future but not as an immediate priority.',note:'Status: Enhancement deferred. Will cost extra when client decides to proceed.'},
+    {dt:'19 Dec 2025',who:'Account manager + client (Ahmed)',tags:['t-bl'],tl:['Client request'],title:'Client requests PG auto top-up for retailers + DMT activation',body:'Client raised two specific requests:\n1. Payment Gateway (PG) setup so retailers can do auto top-up\n2. Activate DMT (Domestic Money Transfer) service on the panel',
+    list:['PG discussion: Initially agreed to use our company\'s PG for the retailer auto top-up, as per commercial already given to client. Client approved.','However, client later reconsidered and said he wants his own private-label PG under his company — not ours.','Mr. Gupta explained: for a private-label PG, the client\'s company needs proper documentation including GST certificate. The company must be formally registered.','Client\'s decision: He will provide documents once the company registration is complete, after which the PG application process can begin.','DMT: Service was activated on the panel, but the API provider had technical issues — DMT was NOT functional. Client was informed.']},
+    {dt:'22 Dec 2025',who:'Client (Ahmed)',tags:['t-am'],tl:['Client request','API issue'],title:'Client requests AEPS activation — service not working',body:'Client asked to enable AEPS (Aadhaar Enabled Payment System) on his panel. Team attempted to activate the service but found the API was also non-functional on the provider\'s side. Client was informed that the team is investigating and checking the issue.',note:'Status: AEPS not working due to API provider issues. Under investigation.'},
+    {dt:'24 Dec 2025',who:'Client (Ahmed) → account manager → Mr. Gupta',tags:['t-am'],tl:['Client request','Volume required','Deferred'],title:'Client requests PAN (NSDL), General Insurance, Life Insurance APIs',body:'Client raised a request to integrate three new APIs: PAN Card creation via NSDL, General Insurance, and Life Insurance. This was immediately escalated to Mr. Gupta for a decision.',
+    list:['Mr. Gupta\'s response: These API providers work on volume-based models — meaning a minimum transaction volume commitment is required before the provider agrees to onboard a client.','Connected with Ahmed on 25 Dec to ask about his expected volume.','Client said: He has no volume data right now as the business is just starting.','Mr. Gupta\'s final call: Cannot proceed with these APIs until client can demonstrate some volume. Deferred.'],
+    note:'Status: Deferred. Client to come back when he has volume data to share with provider.'},
+    {dt:'27 Dec 2025',who:'Client (Ahmed)',tags:['t-pu'],tl:['Company milestone'],title:'Client shares DSC — company registered as private limited',body:'Client shared his Digital Signature Certificate (DSC) document confirming that TwoPay has been formally registered as a private limited company. This was a significant milestone as it unblocks the Payment Gateway application process (which requires a registered private limited company with GST).'},
+    {dt:'27–31 Dec 2025',who:'Account manager + partner team (Toshani)',tags:['t-am'],tl:['Attempted','Dropped'],title:'AEPS + DMT onboarding via partner panel (Toshani) — attempted and dropped',body:'In order to unblock the client for AEPS and DMT, the team internally decided to onboard Ahmed on a partner company\'s panel called Toshani — an older version panel that could provide these services temporarily. This was an internal arrangement, not disclosed fully to client. Client was told he would be onboarded on an older version panel for the time being.',
+    list:['Process started: partner (Toshani) team asked for client documents','Client shared required documents','Problem: The old version panel had certain requirements that could not be fulfilled','Result: Onboarding process dropped completely'],
+    note:'Internal note: This was a workaround attempt. Failed due to old panel limitations. Client was kept informed that services are being worked on.'},
+    {dt:'31 Dec 2025',who:'Account manager + team',tags:['t-co'],tl:['Status review'],title:'Year-end status assessment — honest review of what can be delivered',body:'An honest internal and client-facing assessment was done at year end. Only the following services could be confirmed as deliverable at this point:',
+    list:['Bus booking — functional','Flight booking — functional','QR (Payin / Scan & Pay) — functional','Payout — functional','Aadhaar + PAN card verification — functional'],
+    note:'All other APIs (DMT, AEPS, PG, BBPS, Insurance, etc.) were non-functional or pending. Client was informed clearly. Client was also waiting on company documents to proceed with private-label PG.'},
+    {dt:'7 Jan 2026',who:'Client (Ahmed)',tags:['t-bl'],tl:['Client request','Incomplete docs'],title:'Client receives company docs — requests PG process to start',body:'Client confirmed he had received some of his company\'s official documents and asked to begin the Payment Gateway application process. However, not all required documents were yet available. The PG process could not be initiated. Client was asked to wait until all documents are ready.',note:'Blocking item: Client needed MOA, AOA, and GST certificate before PG process could begin.'},
+    {dt:'12 Jan 2026',who:'Account manager + Mr. Gupta + client (Ahmed)',tags:['t-pu'],tl:['Meeting','Commitment'],title:'Full project review with client and Mr. Gupta — delivery committed',body:'A formal review call was held. Client discussed the overall project status with Mr. Gupta. Key outcomes of this meeting:',
+    list:['B2B App + Web: Confirmed as delivered. Client asked to continue using and testing.','D2C platform: Confirmed as being actively worked on.','Client asked: When will everything be done?','Mr. Gupta\'s commitment: B2B + D2C complete delivery by end of February 2026.','A formal email was sent from support@bos.center confirming: "Both B2B and D2C applications will be delivered on or before the end of February 2026, including complete B2B and D2C software solutions, Payment Gateway, all agreed services, and end-to-end implementation."','MOA and AOA certificates received from client on same date — required for PG application.'],
+    note:'This email is on record. The February 2026 deadline was subsequently missed (documented in Phase 4).'},
+    {dt:'12 Jan 2026',who:'Account manager → client (Ahmed)',tags:['t-te'],tl:['Status update'],title:'Confirmed deliverable APIs communicated to client',body:'Client was informed of the exact services that can be delivered from the current setup, to set correct expectations:',
+    list:['Flight booking API — working','Bus booking API — working','QR Payin (Scan & Pay) — working','Payout API — working','Aadhaar card verification — working','PAN card verification — working'],
+    note:'All other requested APIs (DMT, AEPS, PG, BBPS, NSDL PAN creation, Insurance) remain pending due to technical issues or external dependencies.'},
+    {dt:'16 Jan 2026',who:'Client (Ahmed)',tags:['t-pk'],tl:['Design request'],title:'Client requests logo enhancement for brand registration',body:'Client came back with a request to enhance the existing TwoPay logo. His reasons: he wants to register the logo as a brand trademark, and also intends to use it on prepaid cards (a new service he is planning). He shared examples of what the enhanced logo should look like.'},
+    {dt:'16–17 Jan 2026',who:'Internal team → client (Ahmed)',tags:['t-pk'],tl:['Design','Rejected'],title:'Multiple logo options presented — all rejected, client outsources',body:'The team created multiple revised logo options based on client\'s brief and examples. Client reviewed all options but rejected every single one. He decided to outsource the logo design to an external designer himself.',note:'Outcome: Client finalised the new logo on 17 Jan 2026 and shared it with us. The new logo is now the official TwoPay brand logo and has been deployed across all platforms, APK splash screen, and prepaid card designs.'},
+    {dt:'16 Feb 2026',who:'Client (Ahmed) → account manager → Mr. Gupta → Vishal',tags:['t-pk'],tl:['Design request','Approved'],title:'Client requests prepaid card designs',body:'Client asked us to design prepaid cards for the TwoPay Prepaid Card service he is planning to launch. The request was escalated to Mr. Gupta who approved it the same day. Vishal was assigned to create the designs.'},
+    {dt:'17 Feb 2026',who:'Vishal → account manager → client (Ahmed)',tags:['t-pk','t-te'],tl:['Delivered','Approved'],title:'3 prepaid card designs delivered — all approved by client',body:'Three prepaid card designs were completed and shared with client on 17 Feb. Client reviewed all three and approved all of them. These designs will be used once the prepaid card API is integrated.'},
+    {dt:'30 Mar 2026',who:'Account manager → client (Ahmed)',tags:['t-pk'],tl:['Design request','Client approval'],title:'APK splash screen update requested and approved',body:'Asked client for permission to update the APK splash screen to use the new logo (without the arch and stars from the old logo version). Client approved this on 30 Mar 2026. Internal team started working on the update.'},
+    {dt:'31 Mar 2026',who:'Development team → client (Ahmed)',tags:['t-pk','t-te'],tl:['Delivered','Approved'],title:'New APK splash screen delivered and approved',body:'Updated APK splash screen using the new TwoPay logo was delivered to client on 31 Mar. Client reviewed and approved it.'},
+  ]
+},
+p3:{
+  color:'var(--am)',bg:'var(--am-l)',tc:'var(--am-t)',
+  title:'Phase 3 — API integrations, blockers & third-party discussions',
+  desc:'This is the most complex phase of the project and the most important one for the team to understand. Multiple APIs failed to work, multiple attempts were made to find alternative providers, and the client has been pursuing APIs through multiple channels simultaneously. This phase is still ONGOING. Read every entry carefully — it explains why certain services are still not live.',
+  rows:[
+    {dt:'19 Dec 2025',who:'Internal',tags:['t-am'],tl:['API issue'],title:'DMT API activated but not functional',body:'DMT (Domestic Money Transfer) was activated on the client\'s panel. However, the API from our provider had technical issues and the service was not working. Client was informed of the issue. Team marked this for investigation.',note:'Status as of Apr 2026: Still not resolved. Pending API provider fix.'},
+    {dt:'22 Dec 2025',who:'Internal',tags:['t-am'],tl:['API issue'],title:'AEPS attempted — also not functional',body:'AEPS (Aadhaar Enabled Payment System) was attempted. Like DMT, the API from our provider was also not working. Client was informed. Team continued investigating both AEPS and DMT.',note:'Status as of Apr 2026: Still not resolved. Pending API provider fix.'},
+    {dt:'24 Dec 2025',who:'Client (Ahmed) → account manager → Mr. Gupta',tags:['t-am'],tl:['Client request','Volume required'],title:'New API requests: PAN creation, General Insurance, Life Insurance',body:'Client requested three new API integrations. Mr. Gupta explained all three require minimum volume commitments from providers. Client confirmed no volume available yet. All three deferred.',note:'Status: Deferred. Revisit when client can provide transaction volume data to provider.'},
+    {dt:'27–31 Dec 2025',who:'Internal (Toshani partner)',tags:['t-am'],tl:['Failed attempt'],title:'Toshani partner panel onboarding — attempted and dropped',body:'Internal workaround attempted: tried to onboard client on Toshani partner\'s older panel for AEPS and DMT. Docs collected, process started, but old panel requirements could not be met. Onboarding dropped.',note:'Internal only: Client was told we are onboarding him on an older panel version. The Toshani arrangement is internal and was not fully disclosed to client.'},
+    {dt:'9 Feb 2026',who:'Account manager + Mr. Gupta + client (Ahmed)',tags:['t-am'],tl:['API discussion','iServeU'],title:'iServeU API discussion — call with Mr. Gupta',body:'Client had been researching alternative API providers. He brought up iServeU as a potential source for the missing APIs (Prepaid Card, Micro-ATM, POS, etc.). A call was arranged with Mr. Gupta.',
+    list:['Mr. Gupta\'s instruction: When client visits iServeU office, connect Mr. Gupta on the call so commercial terms and integration requirements can be discussed directly.','Client also confirmed on this call that his GST certificate has been approved and he will receive it shortly.']},
+    {dt:'10 Feb 2026',who:'Client (Ahmed)',tags:['t-am'],tl:['Documentation'],title:'iServeU reference API docs shared by client',body:'Client shared reference API documentation that he received from iServeU. This was for the team\'s reference. Client confirmed he had scheduled a visit to iServeU\'s office on 25 February 2026.',note:'Client\'s planned new services from iServeU: Prepaid Card creation (with wallet system), Micro-ATM service, POS/Swiping machine.'},
+    {dt:'21 Feb 2026',who:'Client (Ahmed) + Mr. Gupta + account manager',tags:['t-pu'],tl:['Compliance','PG discussion'],title:'GST certificate received — PG and BBPS options discussed',body:'Client shared his GST certificate. This enabled the PG application process to potentially begin. Discussion also happened about BBPS and banking options:',
+    list:['BBPS (Bill Payment System): Mr. Gupta explained that new NPCI guidelines require a business to be 7+ years in market with 1 lakh+ user base. Not feasible for TwoPay at this stage.','PG options discussed: (1) Kotak Bank — TwoPay currently has a Kotak account, Kotak Bank itself can provide PG directly. (2) Axis Bank — client could open an Axis Bank account under TwoPay and apply for PG through them.','NRA Global (parent company) has accounts with Yes Bank, ICICI, and SBI but these are under the parent entity.','Client\'s response: He will look into the banking options. Also planning to get PG through iServeU on the upcoming visit.']},
+    {dt:'25 Feb 2026',who:'Client (Ahmed) + Mr. Gupta (on call) + iServeU team',tags:['t-am'],tl:['Third-party meeting','Discovery'],title:'Client visits iServeU office — major finding: SDK not API',body:'Client visited iServeU\'s office in person. Mr. Gupta joined the meeting on call as previously agreed. This was a significant meeting.',
+    list:['Key finding: iServeU does NOT provide direct API access — they provide SDK (Software Development Kit) integration instead.','This is a different model than expected. SDK integration requires a different development approach than standard API calls.','Discussion about Micro-ATM, POS, and Hybrid machines: all deferred to future consideration.','Mr. Gupta and iServeU discussed commercial terms.','Client outcome: He will think about all the options and later decide how to proceed.'],
+    note:'Current status: Client has not yet confirmed which provider he will use for the missing services. iServeU remains an option but decision pending.'},
+    {dt:'16 Mar – 24 Mar 2026',who:'Client (Ahmed) + account manager',tags:['t-bl'],tl:['Client action','Banking'],title:'Client not satisfied with iServeU — pursues YES Bank for direct APIs',body:'Following the iServeU visit, client decided he is not satisfied with the SDK model and wants direct API access. He decided to pursue APIs directly through YES Bank.',
+    list:['Client opened a new YES Bank account under the TwoPay company.','YES Bank has certain documentation and compliance requirements that must be met before API access is granted.','Account manager assisted client with fulfilling YES Bank\'s requirements throughout this period (16–24 Mar).'],
+    note:'As of 14 Apr 2026: Client is in daily contact with YES Bank regarding their API setup. No confirmation yet of API access being granted. This is the most active pending item.'},
+    {dt:'Ongoing',who:'Client (Ahmed)',tags:['t-am'],tl:['Pending','Client action'],title:'New services in client\'s future plan — pending API provider decision',body:'Client has expressed clear intent to add these three services once an API provider is confirmed:',
+    list:['Prepaid Card creation (to be integrated with wallet system)','Micro-ATM service','Swiping machine / POS terminal'],
+    note:'These are NOT part of the original ₹1,00,000 project scope. Each new API integration will be charged at ₹10,000–₹15,000 + GST as per the commercial agreed between client and Mr. Gupta.'},
+  ]
+},
+p4:{
+  color:'var(--co)',bg:'var(--co-l)',tc:'var(--co-t)',
+  title:'Phase 4 — D2C panel + static website delivery',
+  desc:'This phase covers the development and eventual delivery of the D2C (customer-facing) platform and the static informational website. The originally committed delivery date of end-February 2026 was missed — this phase explains exactly why, what was done to recover, and how both were eventually delivered.',
+  rows:[
+    {dt:'20 Feb 2026',who:'Client (Ahmed) → account manager → Mr. Gupta',tags:['t-bl'],tl:['Client request','Approved'],title:'Client requests static informational website',body:'Client asked for a static website that explains what TwoPay does — the services it offers — for marketing and public information purposes. This was separate from the B2B and D2C functional platforms.',
+    list:['Commercial agreed: ₹7,000 + GST','Mr. Gupta approved the request','Account manager explained pricing to client — client agreed','Payment arrangement: Client said he will pay for this along with the 3rd-party API integration payments (bundled). Mr. Gupta approved this deferred payment.','Internal team was emailed to begin work on the static website.'],
+    money:'₹7,000 + GST — agreed, payment deferred'},
+    {dt:'21 Feb 2026',who:'Client (Ahmed)',tags:['t-pu'],tl:['Documents received'],title:'GST certificate submitted by client',body:'Client submitted the GST certificate for TwoPay. This was needed for the Payment Gateway application.'},
+    {dt:'27 Feb 2026',who:'Account manager',tags:['t-te'],tl:['Content collection'],title:'Static website content collected from client',body:'Account manager contacted client to collect all information needed for the static website: company description, services list, contact details, and other relevant content.'},
+    {dt:'28 Feb 2026',who:'Account manager → client (Ahmed)',tags:['t-co'],tl:['Deadline missed','Call with client'],title:'February delivery deadline missed — client call held',body:'The end-of-February 2026 delivery commitment (made via email on 12 Jan 2026) was not met. A call was held with client to explain the situation.',
+    list:['Root cause of delay: Both the static website and the D2C customer panel were technically ready, but could not be deployed because the required domains had not yet been purchased.','The static website needed a separate domain (not twopay.in).','The D2C customer panel also needed its own dedicated domain.','Client was informed that once the domains are purchased, deployment would happen quickly.'],
+    note:'This was a missed commitment that needed to be addressed transparently with the client. Client acknowledged but was not happy about the delay.'},
+    {dt:'5 Mar – 12 Mar 2026',who:'Client (Ahmed) — daily follow-ups',tags:['t-co'],tl:['Client escalation'],title:'Client making daily requests for update on deployment',body:'During this period, client was consistently asking for daily updates on when the deployment would happen. The team was waiting for clarity on domain purchase to provide a firm date. This was a period of high client pressure.'},
+    {dt:'13 Mar 2026',who:'Mr. Gupta + account manager + client (Ahmed)',tags:['t-gr'],tl:['Decision','Payment'],title:'Two additional domains identified and purchased',body:'After discussion with Mr. Gupta, it was determined that two new domains were required — one for the D2C customer panel and one for the static website.',
+    list:['Domain 1: customertwopay.in — for the D2C customer-facing portal. Cost: ₹1,800 + 18% GST','Domain 2: twopay.info — for the static informational website. Cost: ₹6,000 + 18% GST','Client was informed of both domain names and costs','Client made full payment of ₹9,204 directly to Mr. Gupta\'s UPI by scanning his QR code','Mr. Gupta purchased both domains immediately after payment','Account manager updated client: domains are purchased. Server hosting setup will take up to 24 hours.','Client acknowledged and said he will wait.'],
+    money:'₹9,204 received — paid to Mr. Gupta UPI'},
+    {dt:'15 Mar 2026',who:'Account manager → client (Ahmed)',tags:['t-te'],tl:['Content finalised'],title:'Social media handles for static site — client declines',body:'Account manager reached out to client asking if he wants any social media handles (Instagram, Facebook, etc.) to be added to the static website. Client said no — do not add any social media links. Content finalised as is.'},
+    {dt:'16 Mar 2026',who:'Account manager',tags:['t-te'],tl:['Development'],title:'Static website and D2C panel ready — awaiting deployment',body:'Both the static website (twopay.info) and the D2C web panel (customertwopay.in) were technically complete and ready for deployment. Only the domain and server hosting setup needed to complete before they could go live.'},
+    {dt:'27 Mar 2026',who:'Account manager → client (Ahmed)',tags:['t-co'],tl:['Timeline update'],title:'Client updated — delivery committed for 2 April 2026',body:'Client was informed that both websites are ready and will be deployed by 2 April 2026. Client confirmed he understood and would wait.'},
+    {dt:'31 Mar 2026',who:'Development team → account manager → client (Ahmed)',tags:['t-te'],tl:['Delivered — early'],title:'Both sites deployed — one day ahead of committed date',body:'Static website (twopay.info) and D2C web panel (customertwopay.in) were both deployed and live by 31 March 2026 — one day ahead of the committed 2 April date.',
+    list:['twopay.info — static informational site: LIVE','customertwopay.in — D2C customer portal: LIVE','Client was given access credentials and URLs for both','Client began reviewing immediately'],
+    note:'A positive milestone after the delayed February commitment. Client was informed that the D2C mobile application is still being developed as a separate stream.'},
+  ]
+},
+p5:{
+  color:'var(--bl)',bg:'var(--bl-l)',tc:'var(--bl-t)',
+  title:'Phase 5 — Change requests, internal sprint & current status',
+  desc:'After reviewing the delivered D2C panel, client submitted 6 structured change requests on 1 Apr 2026. These were reviewed by the internal team, discussed with client on 9 Apr, and a 5-day sprint was committed. The target delivery date is today — 14 April 2026. This phase is ACTIVE.',
+  rows:[
+    {dt:'1 Apr 2026',who:'Client (Ahmed)',tags:['t-bl'],tl:['Change request','6 items'],title:'Client submits 6 change requests after D2C review',body:'After reviewing the delivered D2C panel and static website, client submitted 6 formal enhancement requests. Each is documented below in full:',
+    list:[
+      '1. CENTRAL GATEWAY — twopay.info should act as a central access point. Replace single Login button with separate Login and Sign-up options. Sign-up popup: show Retailer / Customer options and redirect accordingly. Login popup: show Admin / Retailer / Customer options and redirect to respective panels.',
+      '2. D2C LOGIN UI ENHANCEMENT — Improve overall design and layout of the D2C login page. Make it cleaner, more professional, responsive across desktop/tablet/mobile. Better input styling, validation messages, button design, and align with TwoPay brand colors.',
+      '3. MANDATORY MOBILE OTP — OTP via registered mobile number must be mandatory for both Sign Up and Sign In. Email OTP optional (backup only). Include resend option, 2–5 min OTP expiry, and validation for incorrect/expired OTP.',
+      '4. PHONE LOGIN — Both B2C and B2B panels should allow login using Phone Number. Aligns with the OTP-based phone login system.',
+      '5. DIFFERENT LOGIN UI FOR ADMIN VS RETAIL — Admin panel and Retail panel should have visually distinct login pages. Different layout, different theme, clear identification of which panel the user is accessing.',
+      '6. REMOVE API NAMES, SHOW SERVICE NAMES — The platform currently shows technical API names. Client wants only service names shown (e.g. Recharge & Bill, Flight, Bus). Backend API references can remain but nothing technical should be visible to end users.'
+    ]},
+    {
+  dt:'6 Apr 2026',
+  who:'Mr. Naeem + Mr. Narendra (Backend) + Mr. Basit + account manager',
+  tags:['t-pu'],
+  tl:['Internal review'],
+  title:'Internal team meeting to review all 6 change requests',
+  body:'A team meeting was held to go through all 6 change requests one by one. Team evaluated feasibility, effort required, and any technical concerns. Key discussion item: client had also mentioned wanting KYC (Know Your Customer) verification on the D2C panel at the wallet/signup level. Team flagged this as a problem.',
+  note: `<b>Separate Login UI for Admin & Retail Panel</b><ul><li>This requirement would require major structural changes and increased development time</li><li><b>Status:</b> Not feasible within current scope</li><li><b>Client Response:</b> Agreed to drop this requirement</li></ul><b>KYC Decision:</b><br>Wallet-level KYC or signup-level KYC is not technically feasible at this stage.<br>Mr. Gupta's recommendation (confirmed in client meeting on 9 Apr), KYC should only be triggered when a user wants to use the Prepaid Card service specifically.`
+},
+    {dt:'9 Apr 2026',who:'Account manager + Mr. Gupta + Mr. Naeem + Mr. Rajnish + Mr. Narendra + Mr. Basit + client (Ahmed)',tags:['t-bl'],tl:['Meeting','Sprint committed'],title:'Full team + client meeting — all requests reviewed, sprint started',body:'A full meeting was held with the entire relevant team and the client. Key outcomes:',
+    list:[
+      'Out of 6 change requests: 4 APPROVED for implementation',
+      'KYC scope: KYC will NOT be added at signup or wallet level. KYC will be triggered only when user opts for Prepaid Card service — confirmed and explained to client.',
+      'Separate Login UI for Admin & Retail Panel: This requirement would require major structural changes and increased development time and not feasible within current scope — confirmed and explained to client.',
+      'Sprint duration: 5 working days',
+      'Target delivery date: 14 April 2026',
+      'Assigned: Mr. Narendra (Backend developer), Mr. Ajay (Frontend developer)',
+      'Client acknowledged all decisions and agreed to the timeline'
+    ]},
+    {dt:'13 Apr 2026',who:'Account manager → client (Ahmed)',tags:['t-bl'],tl:['Client communication'],title:'Client informed of scope clarity — what will and won\'t be in this sprint',body:'Client was formally informed of exactly what will be delivered in the current sprint and what is not in scope. This was to ensure no expectation mismatch on delivery day (14 Apr).'},
+    {dt:'14 Apr 2026',who:'Mr. Narendra + Mr. Ajay',tags:['t-co'],tl:['Target date — 14 Apr 2026'],title:'Sprint delivery target — all 4 change requests due',body:'This is the committed delivery date for all 4 change requests from Phase 5. Work is being finalised by Mr. Narendra (Backend) and Mr. Ajay (Frontend).',
+    list:['D2C mobile APK: Still in development (separate stream, not part of this sprint)','Payment Gateway: Still awaiting client banking setup (Yes Bank)','Third Party APIs: Still pending','Client: In daily contact with YES Bank for API access'],
+    note:'Team note: After this sprint is delivered, the remaining major open items are: (1) D2C mobile APK, (2) API decisions from Client side.'},
+  ]
+},
+fin:{
+  color:'var(--gr)',bg:'var(--gr-l)',tc:'var(--gr-t)',
+  title:'Financial record — all payments, commercials & future scope',
+  desc:'Complete financial log for the TwoPay project. Every payment, when it was made, who collected it, what it was for, and what is still pending. Also includes future API pricing agreement for the team\'s reference.',
+  isFinance:true
+},
+status:{
+  color:'var(--co)',bg:'var(--co-l)',tc:'var(--co-t)',
+  title:'Current delivery status — as of 14 April 2026',
+  desc:'A complete snapshot of where the project stands today. For every team member reading this: this is the ground truth. Delivered items are confirmed working and handed over. In-progress items have an active owner. Pending items are blocked waiting on external factors.',
+  isStatus:true
+}
+};
+
+function show(key){
+  const d=data[key];
+  document.getElementById('ov').style.display='none';
+  document.getElementById('pv').style.display='block';
+  let h=`<div class="ph-head" style="background:${d.bg}"><div class="ph-title" style="color:${d.tc}">${d.title}</div><div class="ph-desc" style="color:${d.tc}">${d.desc}</div></div>`;
+
+  if(d.isFinance){
+    h+=`<table class="fin-tbl">
+      <thead><tr><th>Item / description</th><th>Category</th><th>Amount</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Core project — full B2B + D2C platform with all agreed services</td><td>Core project</td><td class="fin-amt">₹1,00,000</td><td><span class="tag t-gr">Received</span></td></tr>
+        <tr><td>Domain twopay.in (3 years): ₹2,537 + SSL certificate (1 year, renewable): ₹5,664. Paid via Pinki Sethi QR. Date: 27 Nov 2025</td><td>Infrastructure</td><td class="fin-amt">₹8,201</td><td><span class="tag t-gr">Received</span></td></tr>
+        <tr><td>Domain customertwopay.in (D2C portal): ₹1,800+GST + Domain twopay.info (static site): ₹6,000+GST. Paid to Mr. Gupta UPI. Date: 13 Mar 2026</td><td>Infrastructure</td><td class="fin-amt">₹9,204</td><td><span class="tag t-gr">Received</span></td></tr>
+        <tr><td>Static informational website (twopay.info) — developed and delivered. Payment deferred by client until 3rd-party API purchase. Approved by Mr. Gupta.</td><td>Additional work</td><td class="fin-amt">₹7,000 + GST</td><td><span class="tag t-am">Payment pending</span></td></tr>
+        <tr><td>Future API integrations — each new API added to the system beyond current scope. Commercial agreed verbally by Mr. Gupta with client.</td><td>Future scope</td><td class="fin-amt">₹10,000–₹15,000 per API + GST</td><td><span class="tag t-bl">TBD — not yet billed</span></td></tr>
+        <tr class="fin-total"><td colspan="2"><strong>Total received to date</strong></td><td class="fin-amt">₹1,17,405</td><td></td></tr>
+        <tr class="fin-total"><td colspan="2"><strong>Total pending / outstanding</strong></td><td class="fin-amt">₹7,000 + GST (min)</td><td></td></tr>
+      </tbody></table>
+      <div class="note" style="margin-top:12px">Future API pricing: ₹10,000 to ₹15,000 per API integration + applicable GST. The exact cost depends on the type and complexity of the API. This applies to all 3rd-party API additions beyond the original scope — including Prepaid Card, Micro-ATM, POS, and any others the client wishes to add. This was verbally agreed between Ahmed (client) and Mr. Gupta. No written contract for future APIs yet — recommend formalising when client confirms API provider.</div>`;
+  } else if(d.isStatus){
+    h+=`<div style="padding:14px 0">
+    <div class="sec-lbl">Delivered and working</div>
+    <div class="status-grid">
+      <div class="sc"><div class="sc-title">Software platforms</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>B2B web portal (twopay.in) — live</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>B2B Android APK — delivered</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>D2C web panel (customertwopay.in) — live</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>Static website (twopay.info) — live</div>
+      </div>
+      <div class="sc"><div class="sc-title">APIs and services working</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>Flight booking API</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>Bus booking API</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>QR Payin / Scan & Pay</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>Payout API</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>Aadhaar card verification</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>PAN card verification</div>
+      </div>
+      <div class="sc"><div class="sc-title">Design deliverables</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>TwoPay logo (client-approved, new version)</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>3 prepaid card designs (all approved)</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>APK splash screen (new logo)</div>
+      </div>
+      <div class="sc"><div class="sc-title">Documentation and compliance</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>Client company: registered as Pvt. Ltd.</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>MOA + AOA submitted to us</div>
+        <div class="si"><span class="si-dot" style="background:var(--gr)"></span>GST certificate received</div>
+      </div>
+    </div>
+    <div class="sec-lbl">In progress (active work)</div>
+    <div class="status-grid">
+      <div class="sc"><div class="sc-title">Current sprint (due today 14 Apr)</div>
+        <div class="si"><span class="si-dot" style="background:var(--bl)"></span>Central gateway login/signup (twopay.info)</div>
+        <div class="si"><span class="si-dot" style="background:var(--bl)"></span>Mandatory mobile OTP for sign up + sign in</div>
+        <div class="si"><span class="si-dot" style="background:var(--bl)"></span>Phone login (B2B + D2C)</div>
+        <div class="si"><span class="si-dot" style="background:var(--bl)"></span>Remove API names, show service names</div>
+      </div>
+      <div class="sc"><div class="sc-title">Development stream</div>
+        <div class="si"><span class="si-dot" style="background:var(--bl)"></span>D2C Android APK (in development, separate stream)</div>
+        <div class="si"><span class="si-dot" style="background:var(--bl)"></span>Client connecting with YES Bank daily for APIs</div>
+      </div>
+    </div>
+    <div class="sec-lbl">Pending — blocked or awaiting external action</div>
+    <div class="status-grid">
+      <div class="sc"><div class="sc-title">API blockers (our side)</div>
+        <div class="si"><span class="si-dot" style="background:var(--am)"></span>Flight — API provider technical issue (not fixed)</div>
+        <div class="si"><span class="si-dot" style="background:var(--am)"></span>Bus — API provider technical issue (not fixed)</div>
+      </div>
+      <div class="sc"><div class="sc-title">API blockers (client side)</div>
+        <div class="si"><span class="si-dot" style="background:var(--am)"></span>Payment Gateway — client needs to finalise bank (Axis/Kotak)</div>
+        <div class="si"><span class="si-dot" style="background:var(--am)"></span>Prepaid Card API — provider not decided (YES Bank / iServeU)</div>
+        <div class="si"><span class="si-dot" style="background:var(--am)"></span>Micro-ATM + POS — pending API provider decision</div>
+        <div class="si"><span class="si-dot" style="background:var(--am)"></span>PAN creation (NSDL), Insurance APIs — volume required</div>
+        <div class="si"><span class="si-dot" style="background:var(--am)"></span>All third party APIs — BBPS, Recharge, DMT/AEPS.</div>
+      </div>
+      <div class="sc"><div class="sc-title">Financial pending</div>
+        <div class="si"><span class="si-dot" style="background:var(--am)"></span>Static website payment: ₹7,000+GST (deferred by client)</div>
+        <div class="si"><span class="si-dot" style="background:var(--am)"></span>Future API payments: ₹10K–₹15K per API (not yet billed)</div>
+      </div>
+      <div class="sc"><div class="sc-title">Other open items</div>
+        <div class="si"><span class="si-dot" style="background:var(--am)"></span>B2B app name — client to finalise</div>
+        <div class="si"><span class="si-dot" style="background:var(--am)"></span>KYC — only to be triggered on Prepaid Card service (not signup)</div>
+      </div>
+    </div>
+    <div class="legend">
+      <div class="leg"><span class="leg-dot" style="background:var(--gr)"></span>Delivered / complete</div>
+      <div class="leg"><span class="leg-dot" style="background:var(--bl)"></span>In progress</div>
+      <div class="leg"><span class="leg-dot" style="background:var(--am)"></span>Pending / blocked</div>
+    </div></div>`;
+  } else {
+    h+=`<table class="tbl">`;
+    d.rows.forEach(r=>{
+      let body=r.body.replace(/\n/g,'<br>');
+      let listHtml='';
+      if(r.list&&r.list.length){listHtml='<ul>'+r.list.map(i=>`<li>${i}</li>`).join('')+'</ul>';}
+      let noteHtml=r.note?`<div class="note">${r.note}</div>`:'';
+      let moneyHtml=r.money?`<span class="money">${r.money}</span> `:'';
+      let tagsHtml=r.tags.map((t,i)=>`<span class="tag ${t}">${r.tl[i]||''}</span>`).join('');
+      h+=`<tr><td class="dt">${r.dt}<br><span style="color:var(--color-text-tertiary);font-size:10px">${r.who}</span></td>
+      <td class="ev"><div class="tags">${tagsHtml}${moneyHtml}</div>
+      <div class="ev-title">${r.title}</div>
+      <div class="ev-body">${body}${listHtml}${noteHtml}</div></td></tr>`;
+    });
+    h+=`</table>`;
+  }
+  document.getElementById('pc').innerHTML=h;
+}
+
+function goBack(){
+  document.getElementById('pv').style.display='none';
+  document.getElementById('ov').style.display='block';
+}
+</script>
